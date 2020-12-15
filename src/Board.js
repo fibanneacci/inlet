@@ -13,10 +13,11 @@ import Form from './Form'
 class Board extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { 
-            showForm: true, 
+        this.state = {
+            showForm: true,
             ArticleArray: []
         };
+        this.toggleForm = this.toggleForm.bind(this)
     }
 
     addItem() {
@@ -29,32 +30,29 @@ class Board extends React.Component {
         })
     }
 
-    toggleForm() {
-        this.setState({  
+    toggleForm(e) {
+        this.setState({
             showForm: !this.state.showForm
-        });  
+        });
         console.log(this.state.showForm)
-    }  
+        e.stopPropagation()
+    }
 
     render() {
         return (
-            <div>
-            <div onClick={() => this.toggleForm.bind(this)}>
-                {this.state.showForm ?  
-                    <Form  
-                        text='Click "Close Button" to hide popup'  
-                        closeForm={this.toggleForm.bind(this)}  
-                    />  
-                : null  
-                }  
+            <div className="Board" onClick={this.toggleForm}>
+                <div>
+                    {this.state.showForm ?
+                        <Form
+                            text='Click "Close Button" to hide popup'
+                            closeForm={this.toggleForm}
+                        />
+                        : null
+                    }
+                </div>
             </div>
-            {/* <div className="Board" onClick={() => this.addItem()}> Later: get mouse click location */}
-                {/* {this.state.ArticleArray}
-            </div>   */}
-            </div> 
         );
-        }
-        
+    }
 }
 
 export default Board;
