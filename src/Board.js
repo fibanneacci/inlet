@@ -2,6 +2,7 @@ import React from 'react'
 import './Board.css'
 import Article from './Article'
 import sample_img from './sample.jpg'
+import Form from './Form'
 
 /* 
  * Make input box; make article card based on input
@@ -10,8 +11,12 @@ import sample_img from './sample.jpg'
 */
 
 class Board extends React.Component {
-    state = {
-        ArticleArray: []
+    constructor(props) {
+        super(props);
+        this.state = { 
+            showForm: true, 
+            ArticleArray: []
+        };
     }
 
     addItem() {
@@ -24,13 +29,32 @@ class Board extends React.Component {
         })
     }
 
+    toggleForm() {
+        this.setState({  
+            showForm: !this.state.showForm
+        });  
+        console.log(this.state.showForm)
+    }  
+
     render() {
         return (
-            <div className="Board" onClick={() => this.addItem()}> {/* Later: get mouse click location */}
-                {this.state.ArticleArray}
+            <div>
+            <div onClick={() => this.toggleForm.bind(this)}>
+                {this.state.showForm ?  
+                    <Form  
+                        text='Click "Close Button" to hide popup'  
+                        closeForm={this.toggleForm.bind(this)}  
+                    />  
+                : null  
+                }  
             </div>
+            {/* <div className="Board" onClick={() => this.addItem()}> Later: get mouse click location */}
+                {/* {this.state.ArticleArray}
+            </div>   */}
+            </div> 
         );
-    }
+        }
+        
 }
 
 export default Board;
