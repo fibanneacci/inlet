@@ -1,0 +1,22 @@
+.Article-image {
+    padding: 2.5px;
+}
+
+.Article-desc {
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+}
+
+.Article {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    background-color: #000000;
+    padding: 10px;
+    margin: 10px; /* Temporary */
+}
+
+p {
+    text-align: left;
+}

@@ -1,0 +1,17 @@
+.Sidebar {
+    width: 5vw;
+    min-width: 75px;
+    height: 100vh;
+    background-color: #000000;
+    display: flex;
+    flex-direction: column;
+    color: #FFFFFF;
+}
+
+.Sidebar-icon {
+    padding: 15px 0 15px 0;
+}
+
+.Sidebar-blob {
+    padding: 5px 10px 5px 10px;
+}
