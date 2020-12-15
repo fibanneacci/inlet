@@ -11,7 +11,7 @@ function Sidebar() {
                 <Link to="/user-profile"><img src={logo} alt="React atom logo" /></Link>
             </div>
             <div className="Sidebar-blob">
-                <Link to="/blob-1"><img src={blob} alt="Blue blob" /></Link>
+                <Link to="/blob-1"><img src={blob} alt="Blue blob 1" /></Link>
             </div>
             <div className="Sidebar-blob">
                 <Link to="/blob-2"><img src={blob} alt="Blue blob" /></Link>
