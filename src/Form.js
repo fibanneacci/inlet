@@ -5,10 +5,14 @@ import './Form.css'
 class Form extends React.Component {
     render() {
         return (
-            <div className='Form'>  
+            <div className='Form_group'>  
             <div className='Form_inner'>  
                 <h1>{this.props.text}</h1>  
+                <label>Enter Name:</label>
+                <input type="text" className="form-control"/>
+            <div>
                 <button onClick={this.props.closeForm}>close me</button>  
+            </div>  
             </div>  
             </div>  
         );  
