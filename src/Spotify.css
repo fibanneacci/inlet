@@ -1,0 +1,18 @@
+.Spotify-search {
+    width: 300px;
+    height: 300px;
+    /* temporary code */
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    /* end temporary code */
+    background-color: #000000
+}
+
+.Spotify-search-bar {
+    padding: 10px;
+}
+
+label {
+    color: #FFFFFF;
+}
