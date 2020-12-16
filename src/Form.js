@@ -5,19 +5,16 @@ import './Form.css'
 class Form extends React.Component {
     render() {
         return (
-            <div className='Form_group'>  
-            <div className='Form_inner'>  
-                <h1>{this.props.text}</h1>  
-                <label>Enter Name:</label>
-                <input type="text" className="form-control"/>
-            <div>
-                <button onClick={this.props.closeForm}>close me</button>  
-            </div>  
-            </div>  
-            </div>  
-        );  
+            <div className='Form'>
+                <div className='Form_inner'>
+                    <button className="closeX" onClick={this.props.closeForm}>x</button>
+                    <h1>{this.props.text}</h1>
+                    <button className="closeButton" onClick={this.props.closeForm}>Done!</button>
+                </div>
+            </div>
+        );
     }
- }
+}
 
 // const Basic = () => (
 //     <div>
@@ -56,5 +53,5 @@ class Form extends React.Component {
 //       </Formik>
 //     </div>
 //   );
-  
-  export default Form;
+
+export default Form;
