@@ -3,6 +3,7 @@ import './Board.css'
 import Article from './Article'
 import sample_img from './sample.jpg'
 import Form from './Form'
+import SpotifySearch from './Spotify'
 
 /* 
  * Make input box; make article card based on input
@@ -14,10 +15,10 @@ class Board extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            showForm: true,
+            showForm: false,
             ArticleArray: []
         };
-        this.toggleForm = this.toggleForm.bind(this)
+        this.toggle = this.toggle.bind(this)
     }
 
     addItem() {
@@ -30,22 +31,27 @@ class Board extends React.Component {
         })
     }
 
-    toggleForm(e) {
-        this.setState({
-            showForm: !this.state.showForm
-        });
-        console.log(this.state.showForm)
-        e.stopPropagation()
+    toggle(e) {
+        if (e.target.tagName == "BUTTON") {
+            this.setState({
+                showForm: false
+            });
+        } else {
+            this.setState({
+                showForm: true
+            });
+        }
     }
 
     render() {
         return (
-            <div className="Board" onClick={this.toggleForm}>
+            <div className="Board" onClick={this.toggle}>
+                <SpotifySearch />
                 <div>
                     {this.state.showForm ?
                         <Form
                             text='Click "Close Button" to hide popup'
-                            closeForm={this.toggleForm}
+                            closeForm={this.toggle}
                         />
                         : null
                     }
