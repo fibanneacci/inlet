@@ -1,6 +1,7 @@
 import React from 'react'
 import './Spotify.css'
 import Song from './Song'
+import Podcast from './Podcast'
 
 class SpotifySearch extends React.Component {
     constructor(props) {
@@ -8,20 +9,21 @@ class SpotifySearch extends React.Component {
         this.state = {
             SongArray: []
         }
-        this.createSongCard = this.createSongCard.bind(this)
+        this.createSpotifyCard = this.createSpotifyCard.bind(this)
     }
 
-    createSongCard() {
-        console.log(document.getElementsByClassName("Spotify-search-input")[0].value)
-        let splitIndex = document.getElementsByClassName("Spotify-search-input")[0].value.indexOf(".com")
-        let propsLeft = document.getElementsByClassName("Spotify-search-input")[0].value.substring(0, splitIndex + 5)
-        let propsRight = document.getElementsByClassName("Spotify-search-input")[0].value.substring(splitIndex + 5)
-        console.log(propsLeft + "embed/" + propsRight)
-        console.log("https://open.spotify.com/embed/track/2gvlPqqngL3BppFCwLXnVc")
-        if (document.getElementsByClassName("Spotify-search-input")[0].value.length != 0) {
-            this.setState({
-            SongArray: this.state.SongArray.concat([<Song key={this.state.SongArray.length} url={document.getElementsByClassName("Spotify-search-input")[0].value} />])
-            })
+    createSpotifyCard() {
+        let input = document.getElementsByClassName("Spotify-search-input")[0].value
+        if (input.length != 0) {
+            if (input.includes("episode")) { // podcast
+                this.setState({
+                    SongArray: this.state.SongArray.concat([<Podcast key={this.state.SongArray.length} url={input} />])
+                })
+            } else { // music
+                this.setState({
+                    SongArray: this.state.SongArray.concat([<Song key={this.state.SongArray.length} url={input} />])
+                })
+            }
         }
         console.log(this.state.SongArray.length)
     }
@@ -32,10 +34,10 @@ class SpotifySearch extends React.Component {
                 <div className="Spotify-search">
                     <div className="Spotify-search-bar">
                         <label htmlFor="Spotify-search-text">Search Spotify: </label>
-                        <input className="Spotify-search-input" type="text" id="Spotify-search-text" name="Spotify-search-text" onChange={this.createSongCard} />
+                        <input className="Spotify-search-input" type="text" id="Spotify-search-text" name="Spotify-search-text" onChange={this.createSpotifyCard} />
                     </div>
                 </div>
-                <div style={{ position: `absolute`, width: `500px`, height: `500px`, top: `200px`, left: `400px`, backgroundColor: `white` }}>
+                <div style={{ position: `absolute`, width: `500px`, height: `500px`, top: `200px`, left: `400px`, backgroundColor: `red` }}>
                     {this.state.SongArray}
                 </div>
             </div>
