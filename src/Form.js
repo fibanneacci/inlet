@@ -1,57 +1,82 @@
-import React from 'react'
+import React from 'react';
 import './Form.css'
-// import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 
-class Form extends React.Component {
+class Forminput extends React.Component {
     render() {
         return (
             <div className='Form'>
                 <div className='Form_inner'>
                     <button className="closeX" onClick={this.props.closeForm}>x</button>
                     <h1>{this.props.text}</h1>
-                    <button className="closeButton" onClick={this.props.closeForm}>Done!</button>
-                </div>
+                    <Formik
+                        initialValues={{ email: "", password: "" }}
+                        validate={values => {
+                            let errors = {};
+                            if (!values.email) {
+                            errors.email = "Required";
+                            } else if (
+                            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+                            ) {
+                            errors.email = "Invalid email address";
+                            }
+                            return errors;
+                        }}
+                        onSubmit={values => {
+                            setTimeout(() => {
+                            this.onFormSubmit(values);
+                            this.hidePopup();
+                            }, 400);
+                        }}
+                        render={({
+                            values,
+                            touched,
+                            errors,
+                            dirty,
+                            isSubmitting,
+                            handleChange,
+                            handleBlur,
+                            handleSubmit,
+                            handleReset
+                        }) => (
+                            <Form onSubmit={handleSubmit}>
+                                <h3>Enter login info</h3>
+                                <div>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    value={values.email}
+                                />
+                                {errors.email && touched.email && errors.email}
+                                </div>
+                                <div>
+                                <input
+                                    type="password"
+                                    name="password"
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    value={values.password}
+                                />
+                                {errors.password && touched.password && errors.password}
+                                </div>
+                                <button
+                                style={{ marginTop: "10px" }}
+                                type="submit"
+                                disabled={isSubmitting}
+                                className="closeButton"
+                                onClick={this.props.closeForm}
+                                >
+                                Done!
+                                </button>
+                            </Form>
+                        )}
+                        />
+                    </div>
             </div>
         );
     }
 }
 
-// const Basic = () => (
-//     <div>
-//       <h1>Any place in your app!</h1>
-//       <Formik
-//         initialValues={{ email: '', password: '' }}
-//         validate={values => {
-//           const errors = {};
-//           if (!values.email) {
-//             errors.email = 'Required';
-//           } else if (
-//             !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-//           ) {
-//             errors.email = 'Invalid email address';
-//           }
-//           return errors;
-//         }}
-//         onSubmit={(values, { setSubmitting }) => {
-//           setTimeout(() => {
-//             alert(JSON.stringify(values, null, 2));
-//             setSubmitting(false);
-//           }, 400);
-//         }}
-//       >
-//         {({ isSubmitting }) => (
-//           <Form>
-//             <Field type="email" name="email" />
-//             <ErrorMessage name="email" component="div" />
-//             <Field type="password" name="password" />
-//             <ErrorMessage name="password" component="div" />
-//             <button type="submit" disabled={isSubmitting}>
-//               Submit
-//             </button>
-//           </Form>
-//         )}
-//       </Formik>
-//     </div>
-//   );
-
-export default Form;
+export default Forminput;
