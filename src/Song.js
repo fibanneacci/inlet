@@ -6,7 +6,7 @@ const Song = (props) => {
     let propsLeft = props.url.substring(0, splitIndex + 5)
     let propsRight = props.url.substring(splitIndex + 5)
     return (
-        <iframe src={"" + propsLeft + "embed/" + propsRight} width="300px" height="380px" frameBorder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+        <iframe src={"" + propsLeft + "embed/" + propsRight} width="300px" height="380px" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     );
 }
 

@@ -20,7 +20,7 @@ class SpotifySearch extends React.Component {
         console.log("https://open.spotify.com/embed/track/2gvlPqqngL3BppFCwLXnVc")
         if (document.getElementsByClassName("Spotify-search-input")[0].value.length != 0) {
             this.setState({
-                SongArray: this.state.SongArray.push(<Song url={document.getElementsByClassName("Spotify-search-input")[0].value} />)
+            SongArray: this.state.SongArray.concat([<Song key={this.state.SongArray.length} url={document.getElementsByClassName("Spotify-search-input")[0].value} />])
             })
         }
         console.log(this.state.SongArray.length)
@@ -34,19 +34,9 @@ class SpotifySearch extends React.Component {
                         <label htmlFor="Spotify-search-text">Search Spotify: </label>
                         <input className="Spotify-search-input" type="text" id="Spotify-search-text" name="Spotify-search-text" onChange={this.createSongCard} />
                     </div>
-                    {/*<div className="Spotify-search-result">
-                    </div>
-                    <div className="Spotify-search-result">
-                    </div>
-                    <div className="Spotify-search-result">
-                    </div>
-                    <div className="Spotify-search-result">
-                    </div>
-                    <div className="Spotify-search-result">
-                    </div>*/}
                 </div>
-                <div style={{ position: `absolute`, width: `500px`, height: `500px`, top: `200px`, left: `400px`, backgroundColor: `red` }}>
-                    {this.SongArray}
+                <div style={{ position: `absolute`, width: `500px`, height: `500px`, top: `200px`, left: `400px`, backgroundColor: `white` }}>
+                    {this.state.SongArray}
                 </div>
             </div>
         );
