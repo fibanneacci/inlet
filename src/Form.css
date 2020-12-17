@@ -17,15 +17,32 @@
   top: 25%;  
   bottom: 25%;  
   margin: auto;  
-  border-radius: 20px;  
+  padding: 5px 20px;
   background: white;  
   display: flex;
   flex-direction: column;
+  border-radius: 2.7vh;
+  border: .8vh solid black;
+}
+
+.Form fieldset {
+    margin: 20px 0;
 }
 
 .closeX {
+  font-weight: bold;
+  font-size: 3.6vh;
+  padding: .1vw;
+  margin-top: 1vh;
+  margin-left: -.4vh;  
   width: 25px;
+  border: none;
+  background-color: transparent;
 }
+
+.closeX:hover {
+    color: rgb(153, 209, 255);
+}   
 
 .closeButton {
   width: 50px;
