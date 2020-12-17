@@ -1,0 +1,12 @@
+{
+  "rulesFile": "database.rules.json",
+  "hosting": {
+    "site": "inletmvp",
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
