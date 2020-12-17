@@ -2,7 +2,7 @@ import React from 'react'
 import './Board.css'
 import Article from './Article'
 import sample_img from './sample.jpg'
-import Form from './Form'
+import Forminput from './Form'
 import SpotifySearch from './Spotify'
 
 /* 
@@ -32,7 +32,7 @@ class Board extends React.Component {
     }
 
     toggle(e) {
-        if (e.target.tagName == "BUTTON") {
+        if (e.target.tagName === "BUTTON") {
             this.setState({
                 showForm: false
             });
@@ -49,8 +49,8 @@ class Board extends React.Component {
                 <SpotifySearch />
                 <div>
                     {this.state.showForm ?
-                        <Form
-                            text='Click "Close Button" to hide popup'
+                        <Forminput
+                            text='add new item'
                             closeForm={this.toggle}
                         />
                         : null
