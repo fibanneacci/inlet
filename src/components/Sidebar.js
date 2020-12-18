@@ -1,8 +1,8 @@
 import './Sidebar.css';
 import React from 'react'
 import { Link } from 'react-router-dom'
-import logo from './logo.svg'
-import blob from './blob.svg'
+import logo from '../assets/logo.svg'
+import blob from '../assets/blob.svg'
 
 function Sidebar() {
     return (

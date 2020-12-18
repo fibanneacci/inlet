@@ -1,7 +1,7 @@
 import React from 'react'
 import './Board.css'
 import Article from './Article'
-import sample_img from './sample.jpg'
+import sample_img from '../assets/sample.jpg'
 import Forminput from './Form'
 import SpotifySearch from './Spotify'
 
