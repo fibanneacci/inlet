@@ -3,7 +3,6 @@ import './Board.css'
 import Article from './Article'
 import sample_img from '../assets/sample.jpg'
 import Forminput from './Form'
-import Prose from './Prose'
 
 /* 
  * Make input box; make article card based on input
@@ -41,17 +40,21 @@ class Board extends React.Component {
                 showForm: true
             });
         }
+        e.preventDefault();
+    }
+
+    submitForm(values) {
+        console.log(values)
     }
 
     render() {
         return (
             <div className="Board" onClick={this.toggle}>
-                <Prose />
                 <div>
                     {this.state.showForm ?
                         <Forminput
-                            text='add new item'
                             closeForm={this.toggle}
+                            submitForm={this.submitForm}
                         />
                         : null
                     }
