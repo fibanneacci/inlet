@@ -26,7 +26,11 @@
 }
 
 .Form fieldset {
-    margin: 20px 0;
+  margin: 20px 0;
+}
+
+.Form p {
+  display: inline;
 }
 
 .closeX {
@@ -45,5 +49,19 @@
 }   
 
 .closeButton {
-  width: 50px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+  width: 90px;
+  padding: 5px 14px;
+  border-radius: 1vh;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5vh;
+  border: .4vh solid black;
+  background-color: transparent;
+}
+
+.closeButton:hover {
+  color: rgb(133, 189, 235);
 }

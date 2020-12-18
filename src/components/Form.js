@@ -1,6 +1,6 @@
 import React from 'react';
 import './Form.css'
-import { Formik, Form } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 class Forminput extends React.Component {
     render() {
@@ -46,6 +46,38 @@ class Forminput extends React.Component {
                             handleSubmit,
                             handleReset
                         }) => (
+                            <Form>
+                                <div id="row">
+                                <p>link</p>
+                                <Field name="link" type="text"/>
+                                </div>
+                                <div>
+                                <p>upload</p>
+                                <Field name="upload" as="select" className="my-select">
+                                    <option value="red">blue</option>
+                                </Field>
+                                </div>
+                                <div>
+                                <p>text</p>
+                                <Field name="text" as="textarea" className="formtextarea"/>
+                                </div>
+                                <div>
+                                <p>tags</p>
+                                <Field name="tags" as="select" className="my-select">
+                                    <option value="blue">blue</option>
+                                    <option value="red">red</option>
+                                    <option value="yellow">yellow</option>
+                                </Field>
+                                </div>
+                                <button
+                                    type="submit"
+                                    disabled={isSubmitting}
+                                    className="closeButton"
+                                    onClick={this.props.closeForm}
+                                >done!
+                                </button>
+                            </Form>
+                            /* {{} </Form>
                             <Form onSubmit={handleSubmit}>
                                 <h3>Enter login info</h3>
                                 <div>
@@ -67,17 +99,7 @@ class Forminput extends React.Component {
                                     value={values.password}
                                 />
                                 {errors.password && touched.password && errors.password}
-                                </div>
-                                <button
-                                style={{ marginTop: "10px" }}
-                                type="submit"
-                                disabled={isSubmitting}
-                                className="closeButton"
-                                onClick={this.props.closeForm}
-                                >
-                                Done!
-                                </button>
-                            </Form>
+                                </div> }*/
                         )}
                         />
                     </div>
