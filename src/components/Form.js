@@ -10,24 +10,31 @@ class Forminput extends React.Component {
                     <button className="closeX" onClick={this.props.closeForm}>x</button>
                     <h1>{this.props.text}</h1>
                     <Formik
-                        initialValues={{ email: "", password: "" }}
-                        validate={values => {
-                            let errors = {};
-                            if (!values.email) {
-                            errors.email = "Required";
-                            } else if (
-                            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-                            ) {
-                            errors.email = "Invalid email address";
-                            }
-                            return errors;
+                        initialValues={{ 
+                            link: "", 
+                            upload: "",
+                            text: "",
+                            tags: "" 
                         }}
                         onSubmit={values => {
                             setTimeout(() => {
                             this.onFormSubmit(values);
-                            this.hidePopup();
                             }, 400);
                         }}
+
+                        // validation code for future reference
+                        // validate={values => {
+                        //     let errors = {};
+                        //     if (!values.email) {
+                        //     errors.email = "Required";
+                        //     } else if (
+                        //     !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+                        //     ) {
+                        //     errors.email = "Invalid email address";
+                        //     }
+                        //     return errors;
+                        // }}
+
                         render={({
                             values,
                             touched,
