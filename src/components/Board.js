@@ -1,6 +1,8 @@
 import React from 'react'
 import './Board.css'
 import Article from './Article'
+import Spotify from './Spotify'
+import Video from './Video'
 import sample_img from '../assets/sample.jpg'
 import Forminput from './Form'
 
@@ -10,24 +12,50 @@ import Forminput from './Form'
  * Drag & drop
 */
 
+let mouseX = 0
+let mouseY = 0
+
 class Board extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             showForm: false,
-            ArticleArray: []
+            itemArray: []
         };
+        this.submitForm = this.submitForm.bind(this)
         this.toggle = this.toggle.bind(this)
     }
 
-    addItem() {
+    addArticle() {
         this.setState({
-            ArticleArray: this.state.ArticleArray.concat([
-                <Article title="Sample Title" author="Sample Author" notes="Sample Notes" key={this.state.ArticleArray.length}>
+            itemArray: this.state.itemArray.concat([
+                <Article title="Sample Title" author="Sample Author" notes="Sample Notes" key={this.state.itemArray.length}>
                     <img src={sample_img} alt="White rabbit sitting in green grass" style={{ maxWidth: `100%` }} />
                 </Article>
             ])
         })
+    }
+
+    submitForm(values) {
+        console.log(values)
+        let link = values[0]
+        let upload = values[1]
+        let text = values[2]
+        let tag = values[3]
+        // Need to implement this more robustly in the future
+        if (link.includes("spotify")) {
+            this.setState({
+                itemArray: this.state.itemArray.concat([
+                    <Spotify url={link} x={mouseX} y={mouseY} />
+                ])
+            })
+        } else if (link.includes("youtube")) {
+            this.setState({
+                itemArray: this.state.itemArray.concat([
+                    <Video url={link} x={mouseX} y={mouseY} />
+                ])
+            })
+        }
     }
 
     toggle(e) {
@@ -39,12 +67,12 @@ class Board extends React.Component {
             this.setState({
                 showForm: true
             });
+            mouseX = e.clientX
+            mouseY = e.clientY
+            console.log(mouseX)
+            console.log(mouseY)
         }
         e.preventDefault();
-    }
-
-    submitForm(values) {
-        console.log(values)
     }
 
     render() {
@@ -59,6 +87,7 @@ class Board extends React.Component {
                         : null
                     }
                 </div>
+                {this.state.itemArray}
             </div>
         );
     }

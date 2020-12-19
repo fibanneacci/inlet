@@ -31,8 +31,8 @@ class Forminput extends React.Component {
                             </div>
                             <div>
                                 <p>upload</p>
-                                <Field name="upload" as="file">
-                                    <option value="red">blue</option>
+                                <Field name="upload" as="select" className="my-select">
+                                    <option value="blue">blue</option>
                                 </Field>
                             </div>
                             <div>
