@@ -14,6 +14,7 @@ import Forminput from './Form'
 
 let mouseX = 0
 let mouseY = 0
+let changeXY = true
 
 class Board extends React.Component {
     constructor(props) {
@@ -63,14 +64,19 @@ class Board extends React.Component {
             this.setState({
                 showForm: false
             });
+            changeXY = true
         } else {
             this.setState({
                 showForm: true
             });
-            mouseX = e.clientX
-            mouseY = e.clientY
-            console.log(mouseX)
-            console.log(mouseY)
+            if (changeXY) {
+                mouseX = e.clientX
+                mouseY = e.clientY
+                console.log(mouseX)
+                console.log(mouseY)
+                changeXY = false
+            }
+            
         }
         e.preventDefault();
     }
