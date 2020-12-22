@@ -3,33 +3,43 @@ import './Form.css'
 import { Formik, Field } from 'formik';
 
 class Forminput extends React.Component {
-    validateForm() {
+     validateForm() {
         console.log('hi')
-        let error;
+        let error
         var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
           '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
           '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
           '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
           '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
           '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
-        if (!!pattern.test(document.getElementById("link").value) == false) {
+        if (!!pattern.test(document.getElementById("link").value) === false) {
             error = "Please enter a valid link"
         } else {
             error = "None"
         }
         console.log(error)  
-
-        if (error != "None") {
+        
+        if (error !== "None") {
             document.getElementById("errorMessage").value = error
-            document.getElementById("errorMessage").style.visibility = "visible"
+            document.getElementById("errorMessage").style.block = "inline-block"
         }
     }
 
-    textLength() {
-        if (document.getElementById("link").value.length >= 2) {
-            return 'over'
-        } 
-        console.log(document.getElementById("link").value)
+    handleText() {
+        var text = document.getElementById("text").value
+        console.log(text)
+        var wordRegex = /[^a-z\d\s]+/gi;
+        var wordCounter = (text.trim()//remove whitespace
+            .replace(/[\W]+/g, ' ')
+            .replace(/([a-z]+)\b[.,]/g, '')//remove commas & fullstops
+            .replace(wordRegex, '')
+            .split(' ')// split words into array elements
+            .filter(function(x){// remove empty array eements
+        return x !== '';
+        }) || []);
+        let count
+        count = wordCounter.length
+        console.log(count)
     }
     
     render() {
@@ -42,8 +52,10 @@ class Forminput extends React.Component {
                         initialValues={{
                             link: "",
                             upload: "",
-                            text: "",
                             tags: ""
+                        }}
+                        defaultValue={{
+                            text: ""
                         }}
                         /*onSubmit={(values, { setSubmitting }) => {
                             setTimeout(() => {
@@ -64,7 +76,7 @@ class Forminput extends React.Component {
                             </div>
                             <div>
                                 <p>text</p>
-                                <Field name="text" as="textarea" className="formtextarea" onChange={this.onChange}/>
+                                <Field name="text" as="textarea" className="formtextarea" contenteditable="true" onChange={this.handleText}/>
 
                             </div>
                             <div>
