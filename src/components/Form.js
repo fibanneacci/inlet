@@ -21,7 +21,7 @@ class Forminput extends React.Component {
         
         if (error !== "None") {
             document.getElementById("errorMessage").value = error
-            document.getElementById("errorMessage").style.block = "inline-block"
+            document.getElementById("errorMessage").style.display = "block"
         }
     }
 
@@ -94,7 +94,7 @@ class Forminput extends React.Component {
                                 document.getElementsByName("tags")[0].value
                             ]) }>done!</button>
 //                             <onClick={this.validateForm}
-//                             <p id="erroronClick={this.validateFormMessage" style={{ visibility: `hidden` }}></p>
+//                             <p id="erroronClick={this.validateFormMessage" style={{ display: `none` }}></p>
                         </form>
                     </Formik>
                 </div>
