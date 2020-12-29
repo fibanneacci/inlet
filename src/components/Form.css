@@ -65,3 +65,7 @@
 .closeButton:hover {
   color: rgb(133, 189, 235);
 }
+
+.errorMessage {
+  text-align: center;
+}

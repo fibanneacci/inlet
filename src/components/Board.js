@@ -25,6 +25,7 @@ class Board extends React.Component {
         };
         this.submitForm = this.submitForm.bind(this)
         this.toggle = this.toggle.bind(this)
+        this.close = this.close.bind(this)
     }
 
     addArticle() {
@@ -37,12 +38,31 @@ class Board extends React.Component {
         })
     }
 
-    submitForm(values) {
-        console.log(values)
-        let link = values[0]
-        let upload = values[1]
-        let text = values[2]
-        let tag = values[3]
+    submitForm() {
+
+        let error = []
+        let link = document.getElementsByName("link")[0].value
+        let upload = document.getElementsByName("upload")[0].value
+        let text = document.getElementsByName("text")[0].value
+        let tag = document.getElementsByName("tags")[0].value
+
+        // check submit 1 field 
+        if(!((link.length > 0 && !upload && text.length===0) || (link.length === 0 && upload && text.length===0) || (link.length === 0 && !upload && text.length > 0))) {
+            error.push("Please submit 1 field")
+        }
+
+        // check submit valid link
+
+        var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+          '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+          '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+          '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+          '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+          '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+        if (link.length > 0 && !!pattern.test(link) === false) {
+            error.push("Please enter a valid link")
+        } 
+
         // Need to implement this more robustly in the future
         if (link.includes("spotify")) {
             this.setState({
@@ -57,14 +77,28 @@ class Board extends React.Component {
                 ])
             })
         }
+
+        return error
     }
 
     toggle(e) {
         if (e.target.tagName === "BUTTON") {
-            this.setState({
-                showForm: false
-            });
-            changeXY = true
+            let error = this.submitForm()
+            if (error.length === 0) {
+                this.setState({
+                    showForm: false
+                });
+                changeXY = true
+            }
+            else {
+                let str = ""
+                for (let i = 0; i < error.length; i++) {
+                    str = str.concat(error[i])
+                    str = str.concat("\n")
+                }
+                console.log(str)
+                document.getElementById("errorMessage").innerHTML = str
+            }
         } else {
             this.setState({
                 showForm: true
@@ -81,13 +115,20 @@ class Board extends React.Component {
         e.preventDefault();
     }
 
+    close() {
+        this.setState({
+            showForm: false
+        });
+        changeXY = true
+    }
+
     render() {
         return (
             <div className="Board" onClick={this.toggle}>
                 <div>
                     {this.state.showForm ?
                         <Forminput
-                            closeForm={this.toggle}
+                            closeForm={this.close}
                             submitForm={this.submitForm}
                         />
                         : null
