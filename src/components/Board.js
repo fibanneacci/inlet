@@ -44,6 +44,7 @@ class Board extends React.Component {
         let link = document.getElementsByName("link")[0].value
         let upload = document.getElementsByName("upload")[0].value
         let text = document.getElementsByName("text")[0].value
+        let textLength = document.getElementById("wordError").innerHTML
         let tag = document.getElementsByName("tags")[0].value
 
         // check submit 1 field 
@@ -62,6 +63,13 @@ class Board extends React.Component {
         if (link.length > 0 && !!pattern.test(link) === false) {
             error.push("Please enter a valid link")
         } 
+
+        console.log(textLength)
+        let index = textLength.indexOf('/')
+        let num = parseInt(textLength.substring(0, index))
+        if (num > 2) {
+            error.push("Please enter fewer than 700 words")
+        }
 
         // Need to implement this more robustly in the future
         if (link.includes("spotify")) {
