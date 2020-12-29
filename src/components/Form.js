@@ -42,7 +42,6 @@ class Forminput extends React.Component {
                     <Formik
                         initialValues={{
                             link: "",
-                            upload: "",
                             tags: ""
                         }}
                         defaultValue={{
@@ -57,7 +56,7 @@ class Forminput extends React.Component {
                             </div>
                             <div>
                                 <p>upload</p>
-                                <input id="upload" name="upload" type="file"></input>
+                                <input id="upload" name="upload" type="file" accept="image/png,image/jpeg"></input>
                             </div>
                             <div>
                                 <p>text</p>
