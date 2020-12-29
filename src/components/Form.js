@@ -3,7 +3,7 @@ import './Form.css'
 import { Formik, Field } from 'formik';
 
 class Forminput extends React.Component {
-     validateForm() {
+    validateForm() {
         let error
         if (error !== "None") {
             document.getElementById("errorMessage").value = error
@@ -38,7 +38,7 @@ class Forminput extends React.Component {
             <div className='Form'>
                 <div className='Form_inner'>
                     <button type="button" className="closeX" onClick={this.props.closeForm}>x</button>
-                    <h1>add new item</h1>
+                    <h1 id="addNew">add new item</h1>
                     <Formik
                         initialValues={{
                             link: "",
@@ -48,22 +48,16 @@ class Forminput extends React.Component {
                         defaultValue={{
                             text: ""
                         }}
-                        /*onSubmit={(values, { setSubmitting }) => {
-                            setTimeout(() => {
-                                alert(JSON.stringify(values, null, 2));
-                                setSubmitting(false);
-                            }, 400);
-                        }}*/
                         validator={() => ({})}
                     >
                         <form>
                             <div id="row">
                                 <p>link</p>
-                                <Field name="link" id="link" type="text"/>
+                                <Field id="link" name="link" id="link" type="text"/>
                             </div>
                             <div>
                                 <p>upload</p>
-                                <input name="upload" type="file"></input>
+                                <input id="upload" name="upload" type="file"></input>
                             </div>
                             <div>
                                 <p>text</p>
@@ -72,14 +66,14 @@ class Forminput extends React.Component {
                             </div>
                             <div>
                                 <p>tags</p>
-                                <Field name="tags" as="select" className="my-select">
+                                <Field id= "tags" name="tags" as="select" className="my-select">
                                     <option value="blue">blue</option>
                                     <option value="red">red</option>
                                     <option value="yellow">yellow</option>
                                 </Field>
                             </div>
-                            <button type="submit" onClick={ () => this.props.toggle}>done!</button>
-                            <div id="errorMessage" style={{ display: "block" }}>hi</div>
+                            <button id= "closeButton" type="submit" onClick={ () => this.props.toggle}>done!</button>
+                            <div id="errorMessage" style={{ display: "block" }}></div>
                         </form>
                     </Formik>
                 </div>
