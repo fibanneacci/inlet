@@ -25,12 +25,25 @@
   border: .8vh solid black;
 }
 
+#addNew {
+  font-size:calc(23px + .4vw);
+}
+
 .Form fieldset {
   margin: 20px 0;
 }
 
 .Form p {
   display: inline;
+}
+
+form p {
+  font-size:calc(12px + .4vw);
+  margin-right: .4vw;
+}
+
+#link, #upload {
+  margin-bottom: .8vh;
 }
 
 .closeX {
@@ -48,7 +61,7 @@
     color: rgb(153, 209, 255);
 }   
 
-.closeButton {
+#closeButton {
   text-align: center;
   font-weight: bold;
   font-size: 15px;
@@ -57,15 +70,22 @@
   border-radius: 1vh;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 5vh;
+  margin-top: 3.3vh;
   border: .4vh solid black;
   background-color: transparent;
 }
 
-.closeButton:hover {
+#closeButton:hover {
   color: rgb(133, 189, 235);
 }
 
-.errorMessage {
+#errorMessage {
+  margin-top: 1.8vh;
   text-align: center;
+  color: rgb(172, 19, 19);
+}
+
+#wordError {
+  margin-bottom: .8vh;
+  font-size: calc(10px + .2vw);
 }
