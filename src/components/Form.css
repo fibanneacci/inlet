@@ -86,6 +86,6 @@ form p {
 }
 
 #wordError {
-  margin-bottom: .8vh;
+  margin-bottom: calc(2px + .8vh);
   font-size: calc(10px + .2vw);
 }
