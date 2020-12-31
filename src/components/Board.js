@@ -75,13 +75,13 @@ class Board extends React.Component {
         if (link.includes("spotify")) {
             this.setState({
                 itemArray: this.state.itemArray.concat([
-                    <Spotify url={link} x={mouseX} y={mouseY} />
+                    <Spotify key={this.state.itemArray.length} url={link} x={mouseX} y={mouseY} />
                 ])
             })
         } else if (link.includes("youtube")) {
             this.setState({
                 itemArray: this.state.itemArray.concat([
-                    <Video url={link} x={mouseX} y={mouseY} />
+                    <Video key={this.state.itemArray.length} url={link} x={mouseX} y={mouseY} />
                 ])
             })
         }
