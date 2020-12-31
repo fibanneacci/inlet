@@ -48,21 +48,21 @@ class Board extends React.Component {
         let tag = document.getElementsByName("tags")[0].value
 
         // check submit 1 field 
-        if(!((link.length > 0 && !upload && text.length===0) || (link.length === 0 && upload && text.length===0) || (link.length === 0 && !upload && text.length > 0))) {
+        if (!((link.length > 0 && !upload && text.length === 0) || (link.length === 0 && upload && text.length === 0) || (link.length === 0 && !upload && text.length > 0))) {
             error.push("Please submit 1 field")
         }
 
         // check submit valid link
 
-        var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
-          '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
-          '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
-          '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
-          '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
-          '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+        var pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
+            '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+            '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+            '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+            '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+            '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
         if (link.length > 0 && !!pattern.test(link) === false) {
             error.push("Please enter a valid link")
-        } 
+        }
 
         console.log(textLength)
         let index = textLength.indexOf('/')
@@ -118,7 +118,7 @@ class Board extends React.Component {
                 console.log(mouseY)
                 changeXY = false
             }
-            
+
         }
         e.preventDefault();
     }

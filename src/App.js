@@ -2,13 +2,17 @@ import './App.css';
 import { BrowserRouter } from 'react-router-dom'
 import Sidebar from './components/Sidebar';
 import Board from './components/Board';
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
         <Sidebar />
-        <Board />
+        <DndProvider backend={HTML5Backend}>
+          <Board />
+        </DndProvider>
       </div>
     </BrowserRouter>
   );
