@@ -1,5 +1,13 @@
 import './App.css';
-import { BrowserRouter } from 'react-router-dom'
+import { 
+  BrowserRouter,
+  Switch,
+  Route,
+  Link,
+  // Redirect,
+  // useHistory,
+  // useLocation
+} from 'react-router-dom'
 import Sidebar from './components/Sidebar';
 import Board from './components/Board';
 import { DndProvider } from 'react-dnd'
